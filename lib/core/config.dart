@@ -12,15 +12,11 @@ class ApiConfig {
     defaultValue: '',
   );
 
-  /// e.g. `http://10.0.2.2:8000/api` for the Android emulator,
-  /// `http://localhost:8000/api` for desktop, web and iOS simulator.
+  /// Production backend URL: https://planttechagro.com/api
+  /// Override with `--dart-define=API_BASE_URL=...` if needed.
   static String get baseUrl {
     if (_defined.isNotEmpty) return _defined.replaceAll(RegExp(r'/+$'), '');
-    if (kIsWeb) return 'http://localhost:8000/api';
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      return 'http://10.0.2.2:8000/api';
-    }
-    return 'http://localhost:8000/api';
+    return 'https://planttechagro.com/api';
   }
 
   /// Storage base (file URLs like `/storage/...` are relative to host root).
